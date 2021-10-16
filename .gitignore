@@ -1,0 +1,26 @@
+# Ignore temporary files.
+*~
+
+# Ignore object files.
+*.o
+*.pyc
+*.class
+
+# Ignore library files.
+*.a
+*.so
+
+# Ignore archive files.
+*gz
+*bz2
+*.zip
+*.tar
+*xz
+*.rar
+
+# Ignore swap files.
+*swo
+*swp
+
+# Ignore GDB files.
+.gdb_history
