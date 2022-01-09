@@ -58,6 +58,25 @@ A CTF challenge folder consists of:
   Content already part of the `public/` folder, required in `Dockerfile`, `run.sh` or other scripts, won't be duplicated in the `deploy/` folder.
   It will be used directly from the `public/` folder.
 
+The `ctf/final-ctf/challenge-folder-1/` and `ctf/mid-ctf/challenge-folder-1/` folders contain skeleton contents of a CTF challenge folder:
+
+```
+|-- deploy/
+|   |-- docker-compose.yml
+|   |-- Dockerfile
+|   |-- Makefile
+|   `-- run.sh
+|-- flag
+|-- public/
+|-- README.md
+|-- sol/
+|   |-- README.md
+|   |-- solution.py
+|   `-- solution.sh*
+`-- src/
+    `-- index.template.php
+```
+
 ## Sessions
 
 As with all SSS tracks, the **TODO-track-name** track consists of multiple sessions.
@@ -88,3 +107,19 @@ An activity folder has a similar structure to the [CTF Challenge Folder Structur
 * `deploy/` (optional): stores similar contents to a CTF challenge.
 
   Most activities require remote deployment in a Docker container, but some may not, making the `deploy` folder optional.
+
+The `session-name-1/activities/activity-folder-1/` folder contains skeleton contents of an activity folder:
+
+```
+|-- deploy/
+|   |-- docker-compose.yml
+|   |-- Dockerfile
+|   |-- Makefile
+|   `-- run.sh
+|-- flag
+|-- README.md
+|-- sol/
+|   `-- README.md
+`-- src/
+    `-- index.template.php
+```
