@@ -1,19 +1,6 @@
-FILE	:= ../flag
-FLAG	:= $(shell cat $(FILE))
+EXTERNAL_PORT := 8081
+IMG_NAME := sss-track-01_challenge-1
+FILE_TEMPLATE := ../src/index.template.php
+FILE_SRC := ../src/index.php
 
-build: generate
-	docker build -f Dockerfile -t sss-web-ctf-mid_challenge-name-1 ..
-
-run: generate build
-	docker run -d -p 8001:80 --name sss-web-ctf-mid_challenge-name-1 sss-web-ctf-mid_challenge-name-1
-
-generate:
-	sed 's/__TEMPLATE__/$(FLAG)/g' ../src/index.template.php > ../src/index.php
-
-stop:
-	docker stop sss-web-ctf-mid_challenge-name-1
-
-clean: stop
-	docker rm sss-web-ctf-mid_challenge-name-1
-
-.PHONY: build run stop clean
+include ../../../../common/challenge.mk
