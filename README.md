@@ -48,7 +48,7 @@ A CTF challenge folder consists of:
   * `Dockerfile`: for creating the Docker container that will run the challenge on the remote system.
   * `docker-compose.yml`: for configuring the Docker containers
   * `Makefile`: the building and running of Docker containers.
-  This file should include `common/challenge.mk` in most cases, but if a challenge has a different structure it can implement its own Makefile.
+    This file should include `common/challenge.mk` in most cases, but if a challenge has a different structure it can implement its own Makefile.
   * `run.sh` (when required): Docker startup script, used to start services.
     It's used inside the `Dockerfile` with `COPY + CMD` commands.
   * Additional files required for the deployment.

@@ -18,6 +18,6 @@ stop:
 clean: stop
 	docker rm $(IMG_NAME)
 	docker image rm $(IMG_NAME):latest
-	rm $(FILE_SRC)
+	rm -f $(FILE_SRC)
 
 .PHONY: run build generate stop clean
