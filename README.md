@@ -18,7 +18,7 @@ For in-depth discussions, please join the [SSS Discord community](https://discor
 
 ## CTF Challenges
 
-CTF (*Capture the Flag*) challenges are only located in this private repository.
+CTF (_Capture the Flag_) challenges are only located in this private repository.
 These are challenges that are to be solved by participants in simulated contests.
 Participants will only be provided with a link to a CTF platform that hosts challenges: description, support files, form for submitting the flag.
 
@@ -30,34 +30,34 @@ Each challenge has its own folder.
 
 A CTF challenge folder consists of:
 
-* `README.md`: details the challenge name, challenge description, points, hints, vulnerability overview, solution overview, deployment instructions.
-* `flag`: contains the flag string.
-* `sol/`: stores the reference solution scripts (`solution.py`, `solution.sh`, `solution.c` + `Makefile` or others).
-* `src/` (optional): stores source code and build scripts to generate deployment or public files.
+- `README.md`: details the challenge name, challenge description, points, hints, vulnerability overview, solution overview, deployment instructions.
+- `flag`: contains the flag string.
+- `sol/`: stores the reference solution scripts (`solution.py`, `solution.sh`, `solution.c` + `Makefile` or others).
+- `src/` (optional): stores source code and build scripts to generate deployment or public files.
   To keep things generic, flags shouldn't be hard-coded in source code files.
   The recommended way is to use a template file and then use a generator script (using `sed` or something similar) that generates the actual file (with the flag inside).
   Most challenges require a source code folder, but some may not, making the `src/` folder optional.
-* `public/` (optional): stores public files that are to be packed in an archive that is to be made available to participants.
+- `public/` (optional): stores public files that are to be packed in an archive that is to be made available to participants.
   They are usually generated from the `src/` folder, though they may also be static files.
   Some challenges may not have any public archive to be presented to contestants, making the `public/` folder optional.
-* `deploy/` (optional): stores deployment files, to be used to host the challenge on a remote system to be exploited by participants, typically in the form of a Docker container.
+- `deploy/` (optional): stores deployment files, to be used to host the challenge on a remote system to be exploited by participants, typically in the form of a Docker container.
   Most challenges require remote deployment in a Docker container, but some may not, making the `deploy/` folder optional.
 
   It typically consists of the following files:
 
-  * `Dockerfile`: for creating the Docker container that will run the challenge on the remote system.
-  * `docker-compose.yml`: for configuring the Docker containers
-  * `Makefile`: the building and running of Docker containers.
+  - `Dockerfile`: for creating the Docker container that will run the challenge on the remote system.
+  - `docker-compose.yml`: for configuring the Docker containers
+  - `Makefile`: the building and running of Docker containers.
     This file should include `common/challenge.mk` in most cases, but if a challenge has a different structure it can implement its own Makefile.
-  * `run.sh` (when required): Docker startup script, used to start services.
+  - `run.sh` (when required): Docker startup script, used to start services.
     It's used inside the `Dockerfile` with `COPY + CMD` commands.
-  * Additional files required for the deployment.
+  - Additional files required for the deployment.
     They may be static files or files generated from the `src/` folder.
 
   Content already part of the `public/` folder, required in `Dockerfile`, `run.sh` or other scripts, won't be duplicated in the `deploy/` folder.
   It will be used directly from the `public/` folder.
 
-The `ctf/final-ctf/challenge-folder-1/` and `ctf/mid-ctf/challenge-folder-1/` folders contain skeleton contents of a CTF challenge folder:
+The `ctf/ctf-1/challenge-folder-1/` folder contains scaffolding contents of a CTF challenge folder:
 
 ```
 |-- deploy/

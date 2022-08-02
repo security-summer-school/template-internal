@@ -1,4 +1,4 @@
-# Name: Web/Binary/Essentials: CTF Final: Challenge Name
+# Name: Web/Binary/Essentials: CTF 1: Challenge Name
 
 ## Description
 
