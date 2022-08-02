@@ -47,6 +47,7 @@ A CTF challenge folder consists of:
 
   - `Dockerfile`: for creating the Docker container that will run the challenge on the remote system.
   - `docker-compose.yml`: for configuring the Docker containers
+  - `.dockerignore`: for [excluding](https://docs.docker.com/engine/reference/builder/#dockerignore-file) some files from the Docker container.
   - `Makefile`: the building and running of Docker containers.
     This file should include `common/challenge.mk` in most cases, but if a challenge has a different structure it can implement its own Makefile.
   - `run.sh` (when required): Docker startup script, used to start services.
@@ -61,7 +62,7 @@ The `ctf/ctf-1/challenge-folder-1/` folder contains scaffolding contents of a CT
 
 ```
 |-- deploy/
-|   |-- .dockerignore
+|   |-- .dockerignore (optional)
 |   |-- docker-compose.yml
 |   |-- Dockerfile
 |   |-- Makefile
