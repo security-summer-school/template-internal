@@ -18,7 +18,7 @@ For in-depth discussions, please join the [SSS Discord community](https://discor
 
 ## CTF Challenges
 
-CTF (*Capture the Flag*) challenges are only located in this private repository.
+CTF (_Capture the Flag_) challenges are only located in this private repository.
 These are challenges that are to be solved by participants in simulated contests.
 Participants will only be provided with a link to a CTF platform that hosts challenges: description, support files, form for submitting the flag.
 
@@ -30,38 +30,39 @@ Each challenge has its own folder.
 
 A CTF challenge folder consists of:
 
-* `README.md`: details the challenge name, challenge description, points, hints, vulnerability overview, solution overview, deployment instructions.
-* `flag`: contains the flag string.
-* `sol/`: stores the reference solution scripts (`solution.py`, `solution.sh`, `solution.c` + `Makefile` or others), and a solution write-up (a detailed set of steps) in `README.md`.
-* `src/` (optional): stores source code and build scripts to generate deployment or public files.
+- `README.md`: details the challenge name, challenge description, points, hints, vulnerability overview, solution overview, deployment instructions.
+- `flag`: contains the flag string.
+- `sol/`: stores the reference solution scripts (`solution.py`, `solution.sh`, `solution.c` + `Makefile` or others).
+- `src/` (optional): stores source code and build scripts to generate deployment or public files.
   To keep things generic, flags shouldn't be hard-coded in source code files.
   The recommended way is to use a template file and then use a generator script (using `sed` or something similar) that generates the actual file (with the flag inside).
-
   Most challenges require a source code folder, but some may not, making the `src/` folder optional.
-* `public/` (optional): stores public files that are to be packed in an archive that is to be made available to participants.
+- `public/` (optional): stores public files that are to be packed in an archive that is to be made available to participants.
   They are usually generated from the `src/` folder, though they may also be static files.
-
   Some challenges may not have any public archive to be presented to contestants, making the `public/` folder optional.
-* `deploy/` (optional): stores deployment files, to be used to host the challenge on a remote system to be exploited by participants, typically in the form of a Docker container.
-
+- `deploy/` (optional): stores deployment files, to be used to host the challenge on a remote system to be exploited by participants, typically in the form of a Docker container.
   Most challenges require remote deployment in a Docker container, but some may not, making the `deploy/` folder optional.
 
   It typically consists of the following files:
 
-  * `Dockerfile`: for creating the Docker container that will run the challenge on the remote system.
-  * `docker-compose.yml` / `Makefile`: for configuring the building and running of the Docker containers
-  * `run.sh` (when required): Docker startup script, used to start services.
+  - `Dockerfile`: for creating the Docker container that will run the challenge on the remote system.
+  - `docker-compose.yml`: for configuring the Docker containers
+  - `.dockerignore`: for [excluding](https://docs.docker.com/engine/reference/builder/#dockerignore-file) some files from the Docker container.
+  - `Makefile`: the building and running of Docker containers.
+    This file should include `common/challenge.mk` in most cases, but if a challenge has a different structure it can implement its own Makefile.
+  - `run.sh` (when required): Docker startup script, used to start services.
     It's used inside the `Dockerfile` with `COPY + CMD` commands.
-  * Additional files required for the deployment.
+  - Additional files required for the deployment.
     They may be static files or files generated from the `src/` folder.
 
   Content already part of the `public/` folder, required in `Dockerfile`, `run.sh` or other scripts, won't be duplicated in the `deploy/` folder.
   It will be used directly from the `public/` folder.
 
-The `ctf/final-ctf/challenge-folder-1/` and `ctf/mid-ctf/challenge-folder-1/` folders contain skeleton contents of a CTF challenge folder:
+The `ctf/ctf-1/challenge-folder-1/` folder contains scaffolding contents of a CTF challenge folder:
 
 ```
 |-- deploy/
+|   |-- .dockerignore (optional)
 |   |-- docker-compose.yml
 |   |-- Dockerfile
 |   |-- Makefile
@@ -73,53 +74,6 @@ The `ctf/final-ctf/challenge-folder-1/` and `ctf/mid-ctf/challenge-folder-1/` fo
 |   |-- README.md
 |   |-- solution.py
 |   `-- solution.sh*
-`-- src/
-    `-- index.template.php
-```
-
-## Sessions
-
-As with all SSS tracks, the **TODO-track-name** track consists of multiple sessions.
-One session typically covers a particular topic of the track.
-Session contents are split among the private and the public repository.
-
-In a private repository, a session folder contains a set of activity folders.
-Activities come in two forms:
-
-* **tutorials**: that provide a step-by-step detailing of the solution.
-* **challenges**: that only state the goal and provide an initial skeleton (and maybe some hints), then the rest is up to participants.
-  Even so, public challenge activity folders store the reference solution to help participants in case they're lost.
-
-### Activity Folder Structure
-
-An activity folder has a similar structure to the [CTF Challenge Folder Structure](#ctf-challenge-folder-structure), as shown below:
-
-* `README.md`: stores similar contents to a CTF challenge.
-* `flag` (optional): contains the flag string.
-  Some activities may not have a flag, making it optional.
-* `sol/`: stores the solution write-up (a detailed set of steps) in `README.md` for challenge activities only.
-  The `README.md` for tutorial activities is stored in the corresponding folder in the public repository.
-  Solution scripts are stored in the public repository.
-* `src/` (optional): stores similar contents to a CTF challenge.
-  The generated files that are to be made available to participants will be stored in the `public/` folder in the corresponding activity folder in the public repository.
-
-  Most activities require a source code folder, but some may not, making the `src/` folder optional.
-* `deploy/` (optional): stores similar contents to a CTF challenge.
-
-  Most activities require remote deployment in a Docker container, but some may not, making the `deploy` folder optional.
-
-The `session-name-1/activities/activity-folder-1/` folder contains skeleton contents of an activity folder:
-
-```
-|-- deploy/
-|   |-- docker-compose.yml
-|   |-- Dockerfile
-|   |-- Makefile
-|   `-- run.sh
-|-- flag
-|-- README.md
-|-- sol/
-|   `-- README.md
 `-- src/
     `-- index.template.php
 ```
