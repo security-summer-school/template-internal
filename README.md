@@ -1,15 +1,15 @@
 # SSS TODO-track-name
 
 This is the private (internal) repository for the **TODO-track-name** track of the Security Summer School (SSS).
-It contains deployment files and scripts, source code files for activities and CTF challenges.
+It contains deployment files and scripts, source code files for CTF challenges.
 This is to be used internally by members of the SSS **TODO-track-name** team for content development.
 It can be made available to partners who want to use the content for their own class / event.
 
-Public content is available to students, participants and hobbyists in the [public repository pair](https://github.com/security-summer-school/template-public/) (TODO: fix link).
+Public content is available to students, participants and hobbyists in the [public repository pair](https://github.com/security-summer-school/template-public/) (TODO: update link).
 
 ## Developing Content
 
-Content is to be developed both in this private (internal) repository and in the [public repository pair](https://github.com/security-summer-school/template-public/) (TODO: fix link).
+Content is to be developed both in this private (internal) repository and in the [public repository pair](https://github.com/security-summer-school/template-public/) (TODO: update link).
 See the [contribution guide](CONTRIBUTING.md) on how you could report or fix issues and on how you can improve content.
 
 Reviewers are requested to follow the [reviewing guide](REVIEWING.md).
@@ -22,7 +22,7 @@ CTF (_Capture the Flag_) challenges are only located in this private repository.
 These are challenges that are to be solved by participants in simulated contests.
 Participants will only be provided with a link to a CTF platform that hosts challenges: description, support files, form for submitting the flag.
 
-The `ctf/` folder stores CTF challenges.
+Each `*ctf*/` folder stores the challenges for a single CTF.
 There are typically two CTFs: a `final-ctf` and a `mid-ctf`.
 Each challenge has its own folder.
 
@@ -32,7 +32,7 @@ A CTF challenge folder consists of:
 
 - `README.md`: details the challenge name, challenge description, points, hints, vulnerability overview, solution overview, deployment instructions.
 - `flag`: contains the flag string.
-- `sol/`: stores the reference solution scripts (`solution.py`, `solution.sh`, `solution.c` + `Makefile` or others).
+- `sol/`: stores the reference solution scripts (`solution.py` / `solution.sh`/ `solution.c` + `Makefile` or others).
 - `src/` (optional): stores source code and build scripts to generate deployment or public files.
   To keep things generic, flags shouldn't be hard-coded in source code files.
   The recommended way is to use a template file and then use a generator script (using `sed` or something similar) that generates the actual file (with the flag inside).
@@ -58,11 +58,11 @@ A CTF challenge folder consists of:
   Content already part of the `public/` folder, required in `Dockerfile`, `run.sh` or other scripts, won't be duplicated in the `deploy/` folder.
   It will be used directly from the `public/` folder.
 
-The `ctf/ctf-1/challenge-folder-1/` folder contains scaffolding contents of a CTF challenge folder:
+The `ctf-1/challenge-folder-1/` folder contains scaffolding contents of a CTF challenge folder:
 
 ```
 |-- deploy/
-|   |-- .dockerignore (optional)
+|   |-- .dockerignore
 |   |-- docker-compose.yml
 |   |-- Dockerfile
 |   |-- Makefile
@@ -73,7 +73,7 @@ The `ctf/ctf-1/challenge-folder-1/` folder contains scaffolding contents of a CT
 |-- sol/
 |   |-- README.md
 |   |-- solution.py
-|   `-- solution.sh*
+|   `-- solution.sh
 `-- src/
     `-- index.template.php
 ```
